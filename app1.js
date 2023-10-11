@@ -10,22 +10,22 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-function login() {
+document.getElementById('login-button').addEventListener('click', () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
   firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      document.getElementById(
-        "message"
-      ).innerText = `Logged in as ${user.email}`;
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      document.getElementById("message").innerText = errorMessage;
-    });
-}
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        document.getElementById(
+            "message"
+        ).innerText = `Logged in as ${user.email}`;
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        document.getElementById("message").innerText = errorMessage;
+      });
+})
